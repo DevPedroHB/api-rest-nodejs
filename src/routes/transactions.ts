@@ -5,6 +5,10 @@ import { FastifyInstance } from "fastify";
 import { z } from "zod";
 
 export async function transactionsRoutes(app: FastifyInstance) {
+  // app.addHook("preHandler", async (request, reply) => {
+  //   console.log(`[${request.method}] ${request.url}`);
+  // });
+
   app.get("/", { preHandler: [checkSessionIdExists] }, async (request) => {
     const { sessionId } = request.cookies;
 
