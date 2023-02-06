@@ -1,6 +1,7 @@
+import { knex } from "@/database";
+import { env } from "@/env";
 import { randomUUID } from "crypto";
 import fastify from "fastify";
-import { knex } from "./database";
 
 const app = fastify();
 
@@ -26,7 +27,7 @@ app.get("/transactions", async () => {
 
 app
   .listen({
-    port: 3333,
+    port: env.PORT,
   })
   .then((url) => {
     console.log(`HTTP server running on ${url}`);
